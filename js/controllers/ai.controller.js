@@ -1,28 +1,22 @@
-/* =====================================================================
-   PORTFY · js/controllers/ai.controller.js
-   Camada: Controller
-   Conversa com o Agente de IA
-   ===================================================================== */
+async function askAI(e) {
+  if (e) e.preventDefault();
+  const input = $('#ci');
+  const text = input.value.trim();
+  if (!text) return false;
 
-function ask(e){
-  e.preventDefault();
-  const v=$('#ci').value.trim();
-  if(!v)return false;
-  D.chat.push(['me',v]);
-  D.chat=D.chat.slice(-40);
-  save();
+  input.value = '';
+  D.chat.push(['me', text]);
+  D.chat.push(['ai', 'Digitando...']);
   render();
-  const ms=$('#ms');
-  ms.insertAdjacentHTML('beforeend','<div class="mg">Digitando…</div>');
-  ms.scrollTop=ms.scrollHeight;
-  $('#ci').focus();
-  setTimeout(()=>{
-    D.chat.push(['ai',aiR(v)]);
-    save();
-    if(page==='ia'){
-      render();
-      $('#ci').focus()
-    }
-  },800);
-  return false
+
+  try {
+    const res = await PortfyAPI.askAI(text, D.conv);
+    D.conv = res.conversation_id;
+    D.chat[D.chat.length - 1] = ['ai', res.reply];
+  } catch (err) {
+    D.chat[D.chat.length - 1] = ['ai', err.message || 'Erro ao conectar à IA.'];
+  }
+
+  render();
+  return false;
 }
