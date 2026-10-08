@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfy – Sua carreira organizada</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/landing.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<!-- LANDING -->
+<div id="land" class="scr on">
+  <header class="nav">
+    <a class="logo" href="#"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</a>
+    <nav class="nl"><a href="#rec">Recursos</a><a href="#rec">Modelos</a><a href="#rec">Agente de IA</a><a href="#cta">Planos</a></nav>
+    <div class="nr">
+      <button class="ic" onclick="theme()" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn sm g" onclick="auth('login')">Entrar</button>
+      <button class="btn sm p" onclick="auth('reg')">Começar agora</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div>
+      <h1>Sua carreira, organizada em um só lugar.</h1>
+      <p>Monte currículos e portfólios com modelos prontos, planeje estudos e entrevistas na agenda e peça ajuda ao Agente de IA quando travar.</p>
+      <div class="hb"><button class="btn p" onclick="auth('reg')">Criar conta grátis</button><button class="btn" onclick="auth('login')">Já tenho conta</button></div>
+    </div>
+    <div style="position:relative">
+      <div class="mock">
+        <div class="mbar"><i></i><i></i><i></i><span>portfy.app/marina</span></div>
+        <div class="mb">
+          <div class="mh"><div class="av">MS</div><div><b>Marina Souza</b><small>Designer de produto · Brasília</small></div></div>
+          <div class="chips"><span class="chip">UX Research</span><span class="chip">Figma</span><span class="chip">React</span><span class="chip">Python</span></div>
+          <div class="tiles"><div class="tl"></div><div class="tl"></div><div class="tl"></div></div>
+          <div class="pl"><span>Perfil completo</span><span>86%</span></div><div class="pg"><i></i></div>
+        </div>
+      </div>
+      <div class="fl" style="top:-18px;right:-12px"><i></i>Entrevista amanhã, 09:00</div>
+      <div class="fl" style="bottom:-18px;left:-14px">Currículo atualizado</div>
+    </div>
+  </section>
+  <section class="sec" id="rec">
+    <h2>Tudo para a sua jornada profissional, sem abrir dez abas.</h2>
+    <p>O Portfy reúne o que estudantes e profissionais usam todo dia para se apresentar e se organizar.</p>
+    <div class="bento">
+      <div class="bc w"><h3>Modelos de currículo e portfólio</h3><p>Escolha um modelo gratuito ou premium, edite e publique.</p><div class="th"><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div></div></div>
+      <div class="bc w bx"><h3>Agente de IA</h3><p>Sugestões para melhorar seu currículo e respostas para dúvidas.</p><div class="bub me">Como destaco meu projeto de TCC?</div><div class="bub">Comece pelo problema que ele resolve e cite um resultado.</div></div>
+      <div class="bc"><h3>Agenda e tarefas</h3><p>Prazos, provas e entrevistas organizados.</p><div class="row"><b>09:00</b>Entrevista técnica</div><div class="row"><b>14:00</b>Estudar UX Research</div></div>
+      <div class="bc"><h3>Portfólios publicados</h3><p>Reúna seus projetos num link para compartilhar com recrutadores.</p><div class="chips"><span class="chip">Design</span><span class="chip">Dev</span><span class="chip">Dados</span></div></div>
+      <div class="bc"><h3>Dados protegidos</h3><p>Senha com regras de complexidade e tema claro ou escuro, como você preferir.</p><div class="chips"><span class="chip">Senha forte</span><span class="chip">Modo escuro</span></div></div>
+    </div>
+  </section>
+  <div class="band" id="cta"><h2>Comece em menos de 5 minutos.</h2><button class="btn" onclick="auth('reg')">Criar minha conta</button></div>
+  <footer class="ft"><span>© 2026 Portfy</span><span>Projeto Integrador · CEUB</span></footer>
+</div>
+
+<!-- AUTH -->
+<div id="auth" class="scr">
+  <div class="ax">
+    <div class="al">
+      <div class="at"><a class="logo" href="#" onclick="show('land');return false"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</a><button class="btn sm" onclick="show('land')">Voltar ao início</button></div>
+      <div class="af">
+        <form class="ac" id="a-login" onsubmit="return login(event)">
+          <h2>Bem-vindo de volta</h2><p>Entre na sua conta para continuar</p>
+          <div class="err" id="e-login"></div>
+          <div class="fd"><label for="l-em">E-mail</label><input class="inp" id="l-em" type="email" placeholder="voce@exemplo.com" autocomplete="email"></div>
+          <div class="fd"><label for="l-pw">Senha<button type="button" onclick="auth('forgot')">Esqueceu a senha?</button></label><div class="pw"><input class="inp" id="l-pw" type="password" placeholder="Sua senha" autocomplete="current-password"><button type="button" onclick="eye('l-pw')" aria-label="Mostrar senha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+          <button class="btn p bl" type="submit">Entrar</button>
+          <div class="sw">Não tem conta? <button type="button" onclick="auth('reg')">Cadastre-se</button></div>
+        </form>
+        <form class="ac" id="a-reg" onsubmit="return reg(event)">
+          <h2>Crie sua conta</h2><p>Leva menos de um minuto</p>
+          <div class="err" id="e-reg"></div>
+          <div class="fd"><label for="r-nm">Nome completo</label><input class="inp" id="r-nm" placeholder="Seu nome completo" autocomplete="name"></div>
+          <div class="fd"><label for="r-em">E-mail</label><input class="inp" id="r-em" type="email" placeholder="voce@exemplo.com" autocomplete="email"></div>
+          <div class="fd"><label for="r-pw">Senha</label><div class="pw"><input class="inp" id="r-pw" type="password" placeholder="Mínimo de 8 caracteres" oninput="rule()" autocomplete="new-password"><button type="button" onclick="eye('r-pw')" aria-label="Mostrar senha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="hint" id="r-h">Use 8 ou mais caracteres, com uma letra maiúscula e um número.</div></div>
+          <div class="fd"><label for="r-cf">Confirmar senha</label><input class="inp" id="r-cf" type="password" placeholder="Repita a senha" autocomplete="new-password"></div>
+          <button class="btn p bl" type="submit">Continuar</button>
+          <div class="sw">Já tem conta? <button type="button" onclick="auth('login')">Entrar</button></div>
+        </form>
+        <form class="ac" id="a-forgot" onsubmit="return forgot(event)">
+          <h2>Recuperar senha</h2><p>Informe seu e-mail e escolha uma nova senha</p>
+          <div class="err" id="e-forgot"></div>
+          <div class="fd"><label for="f-em">E-mail</label><input class="inp" id="f-em" type="email" placeholder="voce@exemplo.com"></div>
+          <div class="fd"><label for="f-pw">Nova senha</label><input class="inp" id="f-pw" type="password" placeholder="Mínimo de 8 caracteres"></div>
+          <div class="fd"><label for="f-cf">Confirmar nova senha</label><input class="inp" id="f-cf" type="password" placeholder="Repita a senha"></div>
+          <button class="btn p bl" type="submit">Alterar senha</button>
+          <div class="sw"><button type="button" onclick="auth('login')">Voltar ao login</button></div>
+        </form>
+        <form class="ac" id="a-diag" onsubmit="return diag(event)">
+          <div class="stp"><i class="on"></i><i id="s2"></i><i id="s3"></i></div>
+          <h2>Vamos te conhecer</h2><p>Três perguntas para personalizar o seu início</p>
+          <div class="err" id="e-diag"></div>
+          <div class="fd"><label for="d1">Quantas horas você estuda por dia?</label><select class="inp" id="d1" onchange="stp()"><option value="">Selecione</option><option>Menos de 1 hora</option><option>1 a 2 horas</option><option>2 a 4 horas</option><option>Mais de 4 horas</option></select></div>
+          <div class="fd"><label for="d2">Em que fase acadêmica você está?</label><select class="inp" id="d2" onchange="stp()"><option value="">Selecione</option><option>Ensino Médio</option><option>Graduação</option><option>Pós-graduação</option><option>Já me formei</option></select></div>
+          <div class="fd"><label for="d3">Para qual mercado você vai ou já está?</label><select class="inp" id="d3" onchange="stp()"><option value="">Selecione</option><option>Tecnologia</option><option>Design</option><option>Marketing</option><option>Engenharia</option><option>Saúde</option><option>Educação</option><option>Outro</option></select></div>
+          <button class="btn p bl" type="submit">Concluir e entrar</button>
+        </form>
+      </div>
+    </div>
+    <aside class="ar"><q>Em uma tarde montei meu portfólio, marquei minhas entrevistas e atualizei o currículo. Tudo no mesmo lugar.</q><div class="who"><div class="av">LM</div><div><b>Lucas Martins</b><br>Estudante de Engenharia de Software</div></div></aside>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="scr ap">
+  <aside class="sb" id="sb">
+    <div class="logo"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</div>
+    <nav class="nv" id="nv"></nav>
+    <div class="su"><div class="av" id="u-av"></div><div><b id="u-nm"></b><small id="u-em"></small></div></div>
+  </aside>
+  <div class="mn">
+    <header class="tb">
+      <div style="display:flex;gap:10px;align-items:center;flex:1;min-width:0">
+        <button class="ic" onclick="menu()" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <label class="sr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="q" placeholder="Pesquisar arquivos, modelos, projetos, notas..." oninput="search()"></label>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="ic" onclick="notif()" aria-label="Notificações"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+        <button class="ic" onclick="theme()" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+        <div class="av" id="u-av2" style="cursor:pointer" onclick="go('cfg')"></div>
+      </div>
+    </header>
+    <main class="pc" id="pc"></main>
+  </div>
+</div>
+
+<style id="pgsz"></style>
+<div class="ed" id="ed">
+  <header class="ed-top">
+    <button class="btn sm" onclick="closeEditor()">← Voltar</button>
+    <input class="inp ed-title" id="ed-title" aria-label="Título do arquivo" oninput="Ed.doc.title=this.value;edSave()">
+    <span class="ed-st" id="ed-st">Salvo</span>
+    <button class="btn sm p" onclick="window.print()">Exportar PDF</button>
+  </header>
+  <div class="ed-body">
+    <aside class="ed-tools">
+      <button onclick="edAdd('text')"><b>T</b>Texto</button>
+      <button onclick="edAdd('rect')"><b>▭</b>Retângulo</button>
+      <button onclick="edAdd('ellipse')"><b>◯</b>Círculo</button>
+      <button onclick="$('#ed-file').click()"><b>🖼</b>Imagem</button>
+      <input id="ed-file" type="file" accept="image/*" hidden onchange="edImage(this)">
+    </aside>
+    <main class="ed-stage" id="ed-stage"><div class="ed-wrap" id="ed-wrap"><div class="ed-page" id="ed-page"></div></div></main>
+    <aside class="ed-props" id="ed-props"></aside>
+  </div>
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)closeM()"><form class="md" id="md" onsubmit="return okM(event)"></form></div>
+<div class="ts" id="ts" role="status"></div>
+
+<!-- Biblioteca do Supabase (só é usada quando js/config.js estiver preenchido) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Ordem importa: config > utils > models > services > views > controllers > main -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/models/state.js"></script>
+<script src="js/models/constants.js"></script>
+<script src="js/models/activity.model.js"></script>
+<script src="js/models/document.model.js"></script>
+<script src="js/services/storage.service.js"></script>
+<script src="js/services/ai.service.js"></script>
+<script src="js/services/portfy-api.js"></script>
+<script src="js/views/ui.view.js"></script>
+<script src="js/views/pages.view.js"></script>
+<script src="js/views/modal.view.js"></script>
+<script src="js/views/editor.view.js"></script>
+<script src="js/controllers/auth.controller.js"></script>
+<script src="js/controllers/app.controller.js"></script>
+<script src="js/controllers/data.controller.js"></script>
+<script src="js/controllers/ai.controller.js"></script>
+<script src="js/controllers/editor.controller.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
