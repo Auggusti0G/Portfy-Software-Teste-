@@ -5,14 +5,14 @@
    ===================================================================== */
 
 /* Conecta ao Supabase quando o config.js estiver preenchido; senão usa o localStorage */
-if (USE_SUPABASE) PortfyAPI.init(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeM()
-});
-
-(function init(){
-  const t=ls.get('pf_theme',null);
-  if(t)document.documentElement.dataset.theme=t;
-  if(ls.get('pf_session',null))enter()
-})();
+// Na abertura do sistema:
+if (window.PortfyAPI) {
+  PortfyAPI.init(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+  
+  const session = await PortfyAPI.session();
+  if (session) {
+    // Se o usuário tem sessão ativa, carrega todos os dados do banco
+    const loadedData = await PortfyAPI.load();
+    enter(loadedData);
+  }
+}
